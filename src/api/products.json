@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "name": "Wireless Headphones",
+    "price": 99.99,
+    "image": "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 2,
+    "name": "Smartphone",
+    "price": 699.99,
+    "image": "https://images.unsplash.com/photo-1556742400-b5c3a5d3b11c?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 3,
+    "name": "Laptop",
+    "price": 1299.99,
+    "image": "https://images.unsplash.com/photo-1511745055066-2a4afa3b4237?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 4,
+    "name": "Smartwatch",
+    "price": 199.99,
+    "image": "https://images.unsplash.com/photo-1582070310729-f124fc1b6624?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 5,
+    "name": "Bluetooth Speaker",
+    "price": 49.99,
+    "image": "https://images.unsplash.com/photo-1600585172562-5e51bb4f0c00?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 6,
+    "name": "Digital Camera",
+    "price": 499.99,
+    "image": "https://images.unsplash.com/photo-1553485784-882d67b58c8a?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 7,
+    "name": "Tablet",
+    "price": 299.99,
+    "image": "https://images.unsplash.com/photo-1521612560984-6fce5d7f1dfb?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 8,
+    "name": "Gaming Console",
+    "price": 399.99,
+    "image": "https://images.unsplash.com/photo-1580479460583-54dbe4b25b76?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 9,
+    "name": "4K TV",
+    "price": 899.99,
+    "image": "https://images.unsplash.com/photo-1604841466641-6bf601f2d888?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 10,
+    "name": "Fitness Tracker",
+    "price": 79.99,
+    "image": "https://images.unsplash.com/photo-1598304741747-e6f01a2672a5?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 11,
+    "name": "E-Reader",
+    "price": 129.99,
+    "image": "https://images.unsplash.com/photo-1531228332786-1f96c44d2a93?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 12,
+    "name": "Portable Charger",
+    "price": 29.99,
+    "image": "https://images.unsplash.com/photo-1597037802921-0bf6c22d8b48?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 13,
+    "name": "Wireless Mouse",
+    "price": 19.99,
+    "image": "https://images.unsplash.com/photo-1592322376142-07d5eac0f8b8?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 14,
+    "name": "Mechanical Keyboard",
+    "price": 89.99,
+    "image": "https://images.unsplash.com/photo-1608621243295-0f94ea018c40?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 15,
+    "name": "VR Headset",
+    "price": 299.99,
+    "image": "https://images.unsplash.com/photo-1516827418689-e828e480aece?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 16,
+    "name": "Action Camera",
+    "price": 349.99,
+    "image": "https://images.unsplash.com/photo-1518041683143-644d3ae4713d?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 17,
+    "name": "Home Assistant",
+    "price": 99.99,
+    "image": "https://images.unsplash.com/photo-1598304188350-4d230300fbf0?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 18,
+    "name": "Smart Light Bulbs",
+    "price": 59.99,
+    "image": "https://images.unsplash.com/photo-1563155474-68f6c25575a1?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 19,
+    "name": "Wireless Charger",
+    "price": 24.99,
+    "image": "https://images.unsplash.com/photo-1585823115066-ad7c8022e6f8?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 20,
+    "name": "Smart Thermostat",
+    "price": 199.99,
+    "image": "https://images.unsplash.com/photo-1584406438301-56d6cd63203e?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 21,
+    "name": "Fitness Smartwatch",
+    "price": 249.99,
+    "image": "https://images.unsplash.com/photo-1572396771125-94f134d884df?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 22,
+    "name": "PC Gaming Chair",
+    "price": 199.99,
+    "image": "https://images.unsplash.com/photo-1612280634806-88d25f6acd20?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 23,
+    "name": "Gaming Mouse",
+    "price": 49.99,
+    "image": "https://images.unsplash.com/photo-1600475977048-a5b0e9b5c678?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 24,
+    "name": "HDMI Cable",
+    "price": 9.99,
+    "image": "https://images.unsplash.com/photo-1579500961080-4ca813928522?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 25,
+    "name": "Gaming Monitor",
+    "price": 299.99,
+    "image": "https://images.unsplash.com/photo-1609274547106-7f12c9f203d0?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 26,
+    "name": "Gift Card",
+    "price": 100.0,
+    "image": "https://images.unsplash.com/photo-1592848558928-3671043a2086?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 27,
+    "name": "Retro Game Console",
+    "price": 149.99,
+    "image": "https://images.unsplash.com/photo-1614499002263-247745bbd80a?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 28,
+    "name": "3D Printer",
+    "price": 599.99,
+    "image": "https://images.unsplash.com/photo-1517835243737-67f4a0a6b8e9?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 29,
+    "name": "Mini Projector",
+    "price": 199.99,
+    "image": "https://images.unsplash.com/photo-1555254718-a303f6438b87?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 30,
+    "name": "Smart Scale",
+    "price": 39.99,
+    "image": "https://images.unsplash.com/photo-1600289074121-80f8e59262a8?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 31,
+    "name": "Smart Coffee Maker",
+    "price": 119.99,
+    "image": "https://images.unsplash.com/photo-1619806840423-8989a62bd3ec?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 32,
+    "name": "Electric Toothbrush",
+    "price": 89.99,
+    "image": "https://images.unsplash.com/photo-1607674749885-5e2052c24a22?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 33,
+    "name": "Air Purifier",
+    "price": 199.99,
+    "image": "https://images.unsplash.com/photo-1582933011993-98690a4eebff?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 34,
+    "name": "Smart Doorbell",
+    "price": 299.99,
+    "image": "https://images.unsplash.com/photo-1572178591987-9cc6626f69f2?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 35,
+    "name": "Wireless Earbuds",
+    "price": 79.99,
+    "image": "https://images.unsplash.com/photo-1590334469080-62f42bccc333?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 36,
+    "name": "Bluetooth Tracker",
+    "price": 29.99,
+    "image": "https://images.unsplash.com/photo-1597351154950-9b600fd1e465?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 37,
+    "name": "Digital Drawing Tablet",
+    "price": 199.99,
+    "image": "https://images.unsplash.com/photo-1606967905686-8cb6c5dc96d3?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 38,
+    "name": "Portable Bluetooth Keyboard",
+    "price": 49.99,
+    "image": "https://images.unsplash.com/photo-1618843904120-ff2cf79e951d?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 39,
+    "name": "Noise Cancelling Headphones",
+    "price": 349.99,
+    "image": "https://images.unsplash.com/photo-1592281480268-539dbebc7c48?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 40,
+    "name": "Electric Kettle",
+    "price": 29.99,
+    "image": "https://images.unsplash.com/photo-1601892274453-90e2f580fb53?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 41,
+    "name": "Smart Refrigerator",
+    "price": 1199.99,
+    "image": "https://images.unsplash.com/photo-1601002954069-95e063d8a6c8?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 42,
+    "name": "Streaming Device",
+    "price": 49.99,
+    "image": "https://images.unsplash.com/photo-1605843930608-bb5e974e4a15?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 43,
+    "name": "Ring Light",
+    "price": 39.99,
+    "image": "https://images.unsplash.com/photo-1618485438655-291c69ea206f?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 44,
+    "name": "Smartphone Gimbal Stabilizer",
+    "price": 299.99,
+    "image": "https://images.unsplash.com/photo-1646264413512-96c62fdffd8f?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 45,
+    "name": "Webcam",
+    "price": 89.99,
+    "image": "https://images.unsplash.com/photo-1614898555666-33a9342c6d90?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 46,
+    "name": "Smart Speaker",
+    "price": 99.99,
+    "image": "https://images.unsplash.com/photo-1583923375170-e9b914b8061b?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 47,
+    "name": "Drone",
+    "price": 499.99,
+    "image": "https://images.unsplash.com/photo-1621195604717-3f50ad6abf16?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 48,
+    "name": "Massage Gun",
+    "price": 79.99,
+    "image": "https://images.unsplash.com/photo-1610774707435-6dcde75856c6?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 49,
+    "name": "LED Strip Lights",
+    "price": 39.99,
+    "image": "https://images.unsplash.com/photo-1593733075920-992e00f23d08?fit=crop&w=150&h=150"
+  },
+  {
+    "id": 50,
+    "name": "Portable Air Purifier",
+    "price": 59.99,
+    "image": "https://images.unsplash.com/photo-1614521594877-178a514f77e9?fit=crop&w=150&h=150"
+  }
+]
