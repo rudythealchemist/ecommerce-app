@@ -1,227 +1,183 @@
-import { useState } from "react"; // Importing useState to manage component state
-import axios from "axios"; // Importing axios for making API calls
-import { useNavigate } from "react-router-dom"; // Importing useNavigate for navigation
-import { toast, ToastContainer } from "react-toastify"; // Importing toast notifications
-import "react-toastify/dist/ReactToastify.css"; // Importing toast styles
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { auth } from "../../FirebaseConfig";
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
 
 const Auth = () => {
-  // State variables to manage form inputs and loading state
-  const [isRegistering, setIsRegistering] = useState(false); // Toggle between login and registration
-  const [firstName, setFirstName] = useState(""); // State for first name
-  const [lastName, setLastName] = useState(""); // State for last name
-  const [email, setEmail] = useState(""); // State for email
-  const [password, setPassword] = useState(""); // State for password
-  const [confirmPassword, setConfirmPassword] = useState(""); // State for confirm password
-  const [loading, setLoading] = useState(false); // State to manage loading indicator
-  const navigate = useNavigate(); // Hook for navigation
-  const [user, setUser] = useState(null); // State to store user info
+  const [isRegistering, setIsRegistering] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  // Email validation function
-  const validateEmail = (email) => {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(String(email).toLowerCase());
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
-  // Password validation function
-  const validatePassword = (password) => {
-    return password.length >= 6; // Example: at least 6 characters
-  };
-
-  // Function to handle user registration
-  const handleRegister = async (event) => {
-    event.preventDefault(); // Prevent default form submission
-    setLoading(true); // Set loading state to true
-
-    // Validate email and password
-    if (!validateEmail(email)) {
+  const validateForm = () => {
+    const { email, password, confirmPassword } = formData;
+    if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
       toast.error("Invalid email format.");
-      setLoading(false);
-      return;
+      return false;
     }
-
-    if (!validatePassword(password)) {
+    if (password.length < 6) {
       toast.error("Password must be at least 6 characters long.");
-      setLoading(false);
-      return;
+      return false;
     }
-
-    if (password !== confirmPassword) {
+    if (isRegistering && password !== confirmPassword) {
       toast.error("Passwords do not match.");
-      setLoading(false);
-      return;
+      return false;
     }
+    return true;
+  };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!validateForm()) return;
+
+    setLoading(true);
     try {
-      const response = await axios.post("http://localhost:5001/api/register", {
-        firstName,
-        lastName,
-        email,
-        password,
-      });
-
-      if (response.status === 201) {
-        // Assuming response.data contains user info
-        const { firstName, lastName } = response.data; // Extract user info
-        toast.success("Registration successful!");
-
-        // Optionally, store user info in context or state management
-        setUser({ firstName, lastName }); // Update user state (or context)
-
-        // Clear input fields
-        setFirstName("");
-        setLastName("");
-        setEmail("");
-        setPassword("");
-        setConfirmPassword("");
-
-        navigate("/login"); // Redirect to login page
+      if (isRegistering) {
+        await handleRegister();
       } else {
-        toast.error("Unexpected response from the server.");
+        await handleLogin();
       }
-    } catch (err) {
-      // Error handling logic...
+    } catch (error) {
+      console.error("Authentication error:", error);
+      toast.error(error.message);
     } finally {
       setLoading(false);
     }
   };
 
-  // Function to handle user login
-  const handleLogin = async (event) => {
-    event.preventDefault(); // Prevent default form submission
-    setLoading(true); // Set loading state to true
+  const handleRegister = async () => {
+    const { email, password, firstName, lastName } = formData;
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    // TODO: Update user profile with first name and last name
+    toast.success("Registration successful!");
+    navigate("/login");
+  };
 
-    try {
-      // Making an API call to log in the user
-      const response = await axios.post("http://localhost:5001/api/login", {
-        email,
-        password,
-      });
+  const handleLogin = async () => {
+    const { email, password } = formData;
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
 
-      // Use the response to check if login was successful
-      if (response.data.token) {
-        localStorage.setItem("token", response.data.token); // Store token in local storage
-        toast.success("Login successful!"); // Show success notification
-        navigate("/dashboard"); // Redirect to dashboard after successful login
-      } else {
-        toast.error("Login failed. Please try again."); // Handle unexpected response structure
-      }
-    } catch (err) {
-      toast.error(err.response?.data?.message || "Login failed."); // Show error notification
-    } finally {
-      setLoading(false); // Reset loading state
-    }
+
+    const user = userCredential.user;
+
+    // Store user data in local storage
+    localStorage.setItem("userId", user.uid);
+    localStorage.setItem("userEmail", user.email);
+    
+
+    // successful login redirect to dashboard
+    toast.success("Login successful!");
+    navigate("/home");
   };
 
   return (
-    <div className="max-w-md mx-auto">
-      <h2 className="text-2xl mb-4">{isRegistering ? "Register" : "Log in"}</h2>
-      <form onSubmit={isRegistering ? handleRegister : handleLogin}>
-        {/* Conditionally render the first and last name input fields only when registering */}
+    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-xl">
+      <h2 className="text-2xl font-bold mb-6text-center">
+        {isRegistering ? "Register" : "Log in"}
+      </h2>
+      <form onSubmit={handleSubmit} className="space-y-4">
         {isRegistering && (
           <>
-            <div className="mb-4">
-              <label htmlFor="firstName" className="block">
-                First Name:
-              </label>
-              <input
-                type="text"
-                id="firstName"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)} // Update first name state
-                required
-                className="border rounded w-full p-2"
-                autoComplete="given-name"
-              />
-            </div>
-            <div className="mb-4">
-              <label htmlFor="lastName" className="block">
-                Last Name:
-              </label>
-              <input
-                type="text"
-                id="lastName"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)} // Update last name state
-                required
-                className="border rounded w-full p-2"
-                autoComplete="family-name"
-              />
-            </div>
+            <input
+              type="text"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleInputChange}
+              placeholder="First Name"
+              required
+              className="w-full px-3 py-2 border rounded-md"
+            />
+            <input
+              type="text"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleInputChange}
+              placeholder="Last Name"
+              required
+              className="w-full px-3 py-2 border rounded-md"
+            />
           </>
         )}
-        {/* Email input field */}
-        <div className="mb-4">
-          <label htmlFor="email" className="block">
-            Email:
-          </label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)} // Update email state
-            required
-            className="border rounded w-full p-2"
-            autoComplete="email"
-          />
-        </div>
-        {/* Password input field */}
-        <div className="mb-4">
-          <label htmlFor="password" className="block">
-            Password:
-          </label>
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleInputChange}
+          placeholder="Email"
+          required
+          className="w-full px-3 py-2 border rounded-md"
+        />
+        <input
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleInputChange}
+          placeholder="Password"
+          required
+          className="w-full px-3 py-2 border rounded-md"
+        />
+        {isRegistering && (
           <input
             type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)} // Update password state
+            name="confirmPassword"
+            value={formData.confirmPassword}
+            onChange={handleInputChange}
+            placeholder="Confirm Password"
             required
-            className="border rounded w-full p-2"
-            autoComplete={isRegistering ? "new-password" : "current-password"} // Set autocomplete attribute based on registration state
+            className="w-full px-3 py-2 border rounded-md"
           />
-        </div>
-        {/* Confirm Password input field */}
-        {isRegistering && (
-          <div className="mb-4">
-            <label htmlFor="confirmPassword" className="block">
-              Confirm Password:
-            </label>
-            <input
-              type="password"
-              id="confirmPassword"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)} // Update confirm password state
-              required
-              className="border rounded w-full p-2"
-              autoComplete="new-password" // Set autocomplete attribute for confirmation password
-            />
-          </div>
         )}
-        {/* Submit button that changes text depending on whether the user is registering or logging in */}
         <button
           type="submit"
-          className="bg-blue-500 text-white rounded px-4 py-2"
-          disabled={loading} // Disable button while loading
+          className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-300"
+          disabled={loading}
         >
-          {loading ? "Loading..." : isRegistering ? "Register" : "Login"}
+          {loading ? "Processing..." : isRegistering ? "Register" : "Login"}
         </button>
       </form>
-      {/* Link to toggle between login and register forms */}
-      <p className="mt-4">
+      <p className="mt-4text-center">
         {isRegistering ? "Already have an account?" : "Don't have an account?"}
         <button
           type="button"
-          onClick={() => setIsRegistering(!isRegistering)} // Toggle registration state
-          className="text-blue-500 underline"
+          onClick={() => setIsRegistering(!isRegistering)}
+          className="ml-2 text-blue-500 hover:underline"
         >
           {isRegistering ? "Login" : "Register"}
         </button>
       </p>
-      <p className="mt-4">
-        <a href="/reset-password" className="text-blue-500 underline">
+      <p className="mt-4 text-center">
+        <a href="/reset-password" className="text-blue-500 hover:underline">
           Forgot your password?
         </a>
       </p>
-      <ToastContainer /> {/* Container to render toast notifications */}
+      <ToastContainer />
     </div>
   );
 };
